@@ -20,21 +20,20 @@ public class Group {
     }
 
     public Student searchStudentByLastName(String lastName) throws StudentNotFoundException {
-        for (int i = 0; i < size; i++) {
-            if (students[i].getLastName().equals(lastName)) {
+        for (int i = 0; i < students.length; i++) {
+            if (students[i] != null && students[i].getLastName().equals(lastName)) {
                 return students[i];
             }
         }
         throw new StudentNotFoundException("Student with last name '" + lastName + "' not found.");
     }
 
-    public String removeStudentByID(int id) throws StudentNotFoundException {
+    public boolean removeStudentByID(int id) throws StudentNotFoundException {
         for (int i = 0; i < size; i++) {
             if (students[i].getId() == id) {
-                students[i] = students[size - 1];
-                students[size - 1] = null;
+                students[i] = null;
                 size--;
-                return "Student with ID " + id + " removed";
+                return true;
             }
         }
         throw new StudentNotFoundException("Student with id '" + id + "' not found.");

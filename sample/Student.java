@@ -10,8 +10,16 @@ public class Student extends Human {
         this.groupName = groupName;
     }
 
+    public Student() {
+
+    }
+
     public int getId() {
         return id;
+    }
+
+    public String getGroupName() {
+        return groupName;
     }
 
     @Override
